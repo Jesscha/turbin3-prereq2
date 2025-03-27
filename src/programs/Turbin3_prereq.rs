@@ -1,12 +1,14 @@
 use solana_idlgen::idlgen;
 
 idlgen!({
-    "address": "ADcaide4vBtKuyZQqdU689YqEGZMCmS4tL35bdTv9wJa",
+    "version": "0.1.0",
+    "name": "turbine_prereq",
     "metadata": {
       "name": "turbine_prereq",
       "version": "0.1.0",
       "spec": "0.1.0",
-      "description": "Created with Anchor"
+      "description": "Created with Anchor",
+      "address": "ADcaide4vBtKuyZQqdU689YqEGZMCmS4tL35bdTv9wJa"
     },
     "instructions": [
       {
@@ -25,11 +27,15 @@ idlgen!({
           {
             "name": "signer",
             "writable": true,
-            "signer": true
+            "signer": true,
+            "isMut": true,
+            "isSigner": true
           },
           {
             "name": "prereq",
             "writable": true,
+            "isMut": true,
+            "isSigner": false,
             "pda": {
               "seeds": [
                 {
@@ -52,7 +58,9 @@ idlgen!({
           },
           {
             "name": "system_program",
-            "address": "11111111111111111111111111111111"
+            "address": "11111111111111111111111111111111",
+            "isMut": false,
+            "isSigner": false
           }
         ],
         "args": [
@@ -78,15 +86,21 @@ idlgen!({
           {
             "name": "signer",
             "writable": true,
-            "signer": true
+            "signer": true,
+            "isMut": true,
+            "isSigner": true
           },
           {
             "name": "prereq",
-            "writable": true
+            "writable": true,
+            "isMut": true,
+            "isSigner": false
           },
           {
             "name": "system_program",
-            "address": "11111111111111111111111111111111"
+            "address": "11111111111111111111111111111111",
+            "isMut": false,
+            "isSigner": false
           }
         ],
         "args": [
@@ -100,6 +114,19 @@ idlgen!({
     "accounts": [
       {
         "name": "SolanaCohort5Account",
+        "type": {
+          "kind": "struct",
+          "fields": [
+            {
+              "name": "github",
+              "type": "bytes"
+            },
+            {
+              "name": "key",
+              "type": "pubkey"
+            }
+          ]
+        },
         "discriminator": [
           167,
           81,
